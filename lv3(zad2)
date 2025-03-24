@@ -1,0 +1,42 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Učitavanje podataka
+mtcars = pd.read_csv('mtcars.csv')
+
+# Provjera učitanih podataka
+print(mtcars.head())  # Ovo će prikazati prvih 5 redaka kako bismo bili sigurni da je DataFrame ispravno učitan
+
+
+
+# 1. Barplot potrošnje automobila s 4, 6 i 8 cilindara
+sns.barplot(x=mtcars.cyl, y=mtcars.mpg)
+plt.xlabel("Broj cilindara")
+plt.ylabel("Potrošnja (mpg)")
+plt.title("Potrošnja goriva po broju cilindara")
+plt.show()
+
+# 2. Boxplot distribucije težine automobila po broju cilindara
+sns.boxplot(x=mtcars.cyl, y=mtcars.wt)
+plt.xlabel("Broj cilindara")
+plt.ylabel("Težina automobila")
+plt.title("Distribucija težine po broju cilindara")
+plt.show()
+
+# 3. Graf potrošnje goriva u odnosu na tip mjenjača
+sns.boxplot(x=mtcars.am, y=mtcars.mpg)
+plt.xticks([0, 1], ["Automatski", "Ručni"])
+plt.xlabel("Tip mjenjača")
+plt.ylabel("Potrošnja goriva (mpg)")
+plt.title("Potrošnja goriva u odnosu na mjenjač")
+plt.show()
+
+# 4. Scatter plot odnosa ubrzanja i snage automobila
+sns.scatterplot(x=mtcars.hp, y=mtcars.qsec, hue=mtcars.am, palette=["red", "blue"])
+plt.xlabel("Snaga (HP)")
+plt.ylabel("Ubrzanje (sekunde)")
+plt.title("Odnos ubrzanja i snage automobila")
+plt.legend(["Automatski", "Ručni"])
+plt.show()
+
